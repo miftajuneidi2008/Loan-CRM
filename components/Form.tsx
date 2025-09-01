@@ -8,22 +8,13 @@ import { cn } from "@/lib/utils";
 import PersonalInfo from "./forms/PersonalInfo";
 import BussenessInfo from "./forms/BussenessInfo";
 import FinancialRequest from "./forms/FinancialRequest";
+import { formSchema, FormSchema } from "@/validation/FormValidation";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const Form = () => {
   const [step,setStep] = useState(1)
-  const [data,setData]= useState({
-    a: '',
-    b: '',
-    c: '',
-    d: '',
-    e: '',
-    f: '',
-    g: '',
-    h: '',
-    i: '',
-    j: ''
-  })
-  console.log(data)
+
   const handleStep = (type:string)=> 
   {
    
@@ -41,14 +32,31 @@ const Form = () => {
       }
     }
   }
+    const form = useForm<FormSchema>({
+    resolver: zodResolver(formSchema),
+    defaultValues: { photo: undefined },
+  });
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors, isSubmitting },
+  } = form;
+
+   const onSubmitForm: SubmitHandler<FormSchema> = async (data) => {
+    // call the server action
+    console.log(data)
+  };
   return (
     <div className="max-w-7xl mx-auto">
-      <div className="w-full h-full flex justify-center ">
+      <div className="w-full h-full ">
+        <form onSubmit={handleSubmit(onSubmitForm)} className="w-full h-full flex justify-center ">
         <Card className="w-full  mx-auto h-max">
           <CardHeader>
             <CardTitle className="text-xl">New</CardTitle>
             <CardContent>
-               <PersonalInfo  />
+               <PersonalInfo  register={register} error = {form.formState.errors} />
               <div className="flex gap-4 flex-wrap items-center mt-4">
                 <p className={cn(step===1 && "font-bold")}>Bussiness Information</p>
                 <p  className={cn(step===2 && "font-bold")}>Financial Request</p>
@@ -58,11 +66,12 @@ const Form = () => {
                 <p  className={cn(step===6 && "font-bold")}>File Attachement</p>
                 <p  className={cn(step===7 && "font-bold")}>Letter Attachement</p>
               </div>
-               {step===1 && <BussenessInfo data={data} setData={setData} />}
+               {step===1 && <BussenessInfo  />}
                {
-                step==2 && <FinancialRequest/>
+                step===2 && <FinancialRequest/>
 
                }
+               {step===3 && <Button type="submit">Submit</Button>}
 
               <div className="w-full flex justify-between my-2">
               <Button variant="outline" disabled={step===1} className="cursor-pointer" onClick={()=>handleStep("prev")}><ChevronLeft /></Button>
@@ -71,6 +80,7 @@ const Form = () => {
             </CardContent>
           </CardHeader>
         </Card>
+        </form>
       </div>
     </div>
   );

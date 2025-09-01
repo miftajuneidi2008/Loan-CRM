@@ -1,29 +1,12 @@
 import React from "react";
 import { Input } from "../ui/input";
-type Datas = {
-  a: string;
-  b: string;
-  c: string;
-  d: string;
-  e: string;
-  f: string;
-  g: string;
-  h: string;
-  i: string;
-  j: string;
-};
 
-// Define the props interface for clarity
-interface PersonalInfoProps {
-  data: Datas; // Expect a prop named 'data' of type 'Datas'
-  setData: React.Dispatch<React.SetStateAction<Datas>>;
-}
-const BussenessInfo = ({ data, setData }: PersonalInfoProps) => {
+const BussenessInfo = () => {
   return (
     <div className="md:flex gap-2 mt-4">
       <div className="w-full md:w-1/2 flex flex-col gap-3">
-        <Input type="text"       value={data.a}
-          onChange={(e) => setData({ ...data, a: e.target.value })} name="a" required placeholder="Finance Category" />
+        <Input type="text"      
+           name="a" required placeholder="Finance Category" />
         <Input type="text" name="b" required placeholder="Bussiness Sector" />
         <Input type="date" name="c" required placeholder="Established Year" />
         <Input type="number" name="d" required placeholder="Bussiness License Number" />
