@@ -39,9 +39,9 @@ export const formSchema = z.object({
       )}.`
     )
 ,
- a:z.string().min(3,"Finance Category should be at least 3 characters long").max(20)
+ business_sector:z.string().min(3,"Business Sector should be at least 3 characters long").max(20),
+ finance_type: z.string().min(3,"Finance Type should be at least 3 characters long").max(20)
 
-    
 });
 
 

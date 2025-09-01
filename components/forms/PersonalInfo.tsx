@@ -3,7 +3,7 @@ import { Input } from "../ui/input";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
 import { cn } from "@/lib/utils";
 
-type Register=UseFormRegister<{
+export type Register=UseFormRegister<{
     full_name: string;
     marital_status: string;
     residence_address_id: string;
@@ -11,9 +11,10 @@ type Register=UseFormRegister<{
     mobile: string;
     email: string;
     amount_requested: number;
+    business_sector: string;
 }>
 
-type Errors = FieldErrors<{
+export type Errors = FieldErrors<{
     full_name: string;
     marital_status: string;
     residence_address_id: string;
@@ -22,6 +23,7 @@ type Errors = FieldErrors<{
     email: string;
     amount_requested: number;
     photo: File;
+    business_sector:string
 }>
 
 const PersonalInfo = ({register, error}:{register:Register, error:Errors}) => {

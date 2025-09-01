@@ -66,7 +66,7 @@ const Form = () => {
                 <p  className={cn(step===6 && "font-bold")}>File Attachement</p>
                 <p  className={cn(step===7 && "font-bold")}>Letter Attachement</p>
               </div>
-               {step===1 && <BussenessInfo  />}
+               {step===1 && <BussenessInfo register={register} error = {form.formState.errors} />}
                {
                 step===2 && <FinancialRequest/>
 
