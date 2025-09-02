@@ -11,7 +11,7 @@ import {
 const FinancialRequest = () => {
   return (
     <div className="md:flex gap-2 mt-4">
-      <div className="w-full md:w-1/2 flex flex-col gap-3">
+      <div className="w-full md:w-1/2 flex flex-col gap-4">
         <Input type="text" name="a" required placeholder="Financial Purpose" />
         <Select>
           <SelectTrigger className="w-[80%]">
@@ -25,16 +25,17 @@ const FinancialRequest = () => {
           </SelectContent>
         </Select>
         <Input type="text" name="c" required placeholder="Duration of Finance" />
-     
-      </div>
-      <div className="w-full md:w-1/2 flex flex-col gap-3">
-      
-        <Input
+         <Input
           type="text"
           name="h"
           required
           placeholder="Repayment Source"
         />
+     
+      </div>
+      <div className="w-full md:w-1/2 flex flex-col gap-3">
+      
+       
         <Input type="text" name="i" required placeholder="Installment Mode" />
       
       </div>
