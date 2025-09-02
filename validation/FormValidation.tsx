@@ -2,8 +2,10 @@ import { z } from "zod";
 
 
 // Define the file size limit and accepted file types as constants
-const MAX_FILE_SIZE = 3 * 1024 * 1024; // 3MB in bytes
+const MAX_FILE_SIZE = 2 * 1024 * 1024; // 3MB in bytes
 const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/png"];
+
+const ACCEPTED_FILE_TYPES = ["application/pdf"];
 
 export const formSchema = z.object({
   full_name: z
@@ -78,6 +80,25 @@ date_granted: z.string().min(3,"Date Granted should be at least 3 characters lon
 expiry_date: z.string().min(3,"Expiry Date should be at least 3 characters long").max(50),
 remark: z.string().min(3,"Remark should be at least 3 characters long").max(100),
 
+
+//Sister Company
+company_name:z.string().min(3,"Company Name should be at least 3 characters long").max(50), 
+your_role: z.string().min(3,"Your Role should be at least 3 characters long").max(50),
+shares: z.number().min(0,"Shares should be a positive number"),
+share_value: z.number().min(0,"Share Value should be a positive number"),
+
+//Attachment Schema
+attachment_id:z.string(),
+  document: z
+    .instanceof(File, { message: 'A file is required.' })
+    .refine((file) => file.size <= MAX_FILE_SIZE, `Max file size is 1MB.`)
+    .refine(
+      (file) => ACCEPTED_FILE_TYPES.includes(file.type),
+      "Only .pdf files are accepted."
+    ),
+  document_filename: z.string().min(3,"Document Filename should be at least 3 characters long").max(100),
+  checklist_yes: z.boolean().default(false),
+  checklist_no: z.boolean().default(false)
 
 
 

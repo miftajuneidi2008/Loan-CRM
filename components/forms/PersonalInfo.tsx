@@ -48,6 +48,19 @@ export type Register = UseFormRegister<{
   date_granted: string;
   expiry_date: string;
   remark: string;
+
+  //Sister Company Information
+  company_name: string;
+  your_role: string;
+  shares: number;
+  share_value: number;
+
+    //Attachement
+  attachment_id:string;
+    document: File,
+    document_filename:string,
+    checklist_yes: boolean,
+    checklist_no: boolean
 }>;
 
 export type Errors = FieldErrors<{
@@ -96,6 +109,19 @@ export type Errors = FieldErrors<{
   date_granted: string;
   expiry_date: string;
   remark: string;
+
+  //Sister Company Information
+  company_name: string;
+  your_role: string;
+  shares: number;
+  share_value: number;
+
+  //Attachement
+  attachment_id:string;
+    document: File,
+    document_filename:string,
+    checklist_yes: boolean,
+    checklist_no: boolean
 }>;
 
 const PersonalInfo = ({

@@ -13,6 +13,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import CollateralInformation from "./forms/CollateralInformation";
 import PrevousCredit from "./forms/PrevousCredit";
+import SisterCompanies from "./forms/SisterCompanies";
+import Attachement from "./forms/Attachement";
 
 const Form = () => {
   const [step,setStep] = useState(0)
@@ -76,8 +78,10 @@ const Form = () => {
                }
                 {step===3 && <CollateralInformation register={register} error = {form.formState.errors} />}
                 {step===4 && <PrevousCredit register={register} error = {form.formState.errors} />}
+                {step===5 && <SisterCompanies register={register} error = {form.formState.errors} />}
+                {step===6 && <Attachement register={register} error = {form.formState.errors} />}
 
-               {step===5 && <Button type="submit">Submit</Button>}
+               {step===7 && <Button type="submit">Submit</Button>}
 
               <div className="w-full flex justify-between my-2">
               <Button variant="outline" disabled={step===0} className="cursor-pointer" onClick={()=>handleStep("prev")}><ChevronLeft /></Button>

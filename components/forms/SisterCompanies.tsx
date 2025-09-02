@@ -10,78 +10,56 @@ const SisterCompanies = ({
   register: Register;
   error: Errors;
 }) => {
-     
   return (
     <div>
-      <p className="text-xl font-bold py-4">Previous Credit Information</p>
+      <p className="text-xl font-bold py-4">Sister Companies</p>
       <div className="md:flex gap-3">
         <div className="w-full md:w-1/2 flex flex-col gap-4">
           <Input
-            {...register("financing_institution")}
+            {...register("company_name")}
             type="text"
-            name="financing_institution"
+            name="company_name"
             required
-            placeholder="Financing Institution"
-            className={cn({ "border-red-500": error.financing_institution })} // Add error class
+            placeholder="Company Name"
+            className={cn({ "border-red-500": error.company_name })} // Add error class
           />
           <p className="text-red-500">
-            {error.financing_institution && error.financing_institution.message}
+            {error.company_name && error.company_name.message}
           </p>
           <Input
-            {...register("finance_type")}
+            {...register("your_role")}
             type="text"
-            name="finance_type"
+            name="your_role"
             required
-            placeholder="Financed Type"
-            className={cn({ "border-red-500": error.finance_type })}
+            placeholder="Your Role"
+            className={cn({ "border-red-500": error.your_role })}
           />
           <p className="text-red-500">
-            {error.finance_type && error.finance_type.message}
+            {error.your_role && error.your_role.message}
           </p>
           <Input
-            {...register("amount")}
+            {...register("shares")}
             type="number"
-            name="amount"
+            name="shares"
             required
-            placeholder="Amount"
-            className={cn({ "border-red-500": error.amount })}
+            placeholder="Shares"
+            className={cn({ "border-red-500": error.shares })}
           />
-          <p className="text-red-500">
-            {error.amount && error.amount.message}
-          </p>
-          <Input
-            {...register("date_granted")}
-            type="text"
-            name="date_granted"
-            required
-            placeholder="Date Granted"
-            className={cn({ "border-red-500": error.date_granted })}
-          />
-          <p className="text-red-500">
-            {error.date_granted && error.date_granted.message}
-          </p>
+
+          <p className="text-red-500">{error.shares && error.shares.message}</p>
         </div>
         <div className="mt-2 md:mt-0 w-full md:w-1/2 flex flex-col gap-4">
           <Input
-            {...register("expiry_date")}
+            {...register("share_value")}
             type="text"
-            name="expiry_date"
+            name="share_value"
             required
-            placeholder="Expired Date"
-            className={cn({ "border-red-500": error.expiry_date })}
+            placeholder="Share Value"
+            className={cn({ "border-red-500": error.share_value })}
           />
           <p className="text-red-500">
-            {error.expiry_date && error.expiry_date.message}
+            {error.share_value && error.share_value.message}
           </p>
-          <Input
-          
-            type="text"
-            name="collateral_owner"
-            required
-            placeholder="Date Settled"
-           
-          />
-       
           <Input
             {...register("remark")}
             type="text"
@@ -90,18 +68,11 @@ const SisterCompanies = ({
             placeholder="Remark"
             className={cn({ "border-red-500": error.remark })}
           />
-          <p className="text-red-500">
-            {error.remark && error.remark.message}
-          </p>
-       
+          <p className="text-red-500">{error.remark && error.remark.message}</p>
         </div>
       </div>
     </div>
   );
 };
 
-
-
-
-
-export default SisterCompanies
+export default SisterCompanies;
